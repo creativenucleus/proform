@@ -13,7 +13,7 @@ Desirables
 - Form flow / dependencies
 
 Dependencies
-- jQuery?
+- jQuery
 
 User-centric behaviour
 - Input is selected - show input hint

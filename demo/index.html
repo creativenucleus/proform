@@ -9,9 +9,14 @@
 		
 		<form class="proform">
 			<div>	<!-- Input container -->
-				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#postcode-error">
-				<div id="postcode-hint" class="hint-container"></div>
-				<div id="postcode-error" class="error-container"></div>
+				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#error-postcode" data-hint-container="#hint-postcode">
+				<div id="hint-postcode" class="hint-container"></div>
+				<div id="error-postcode" class="error-container"></div>
+			</div>
+			<div>	<!-- Input container -->
+				<input type="text" name="telephone" placeholder="Enter a UK telephone" data-pf-pattern="/^\+?[0-9 ()]{7,12}$/i" data-error-container="#error-telephone" data-hint-container="#hint-telephone">
+				<div id="hint-telephone" class="hint-container"></div>
+				<div id="error-telephone" class="error-container"></div>
 			</div>
 			<input type="submit" value="Go!">
 		</form>
@@ -21,20 +26,21 @@
 		<![endif]-->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
 		<script type="text/javascript" src="../lib/proform.js"></script>
+		<script type="text/javascript" src="../lib/proform-lang-en-gb.js"></script>
 		<script>
 			$( document ).ready( function() {
-			
+						
 				$( '.error-container' ).hide();
 				$( '.hint-container' ).hide();
 
 				$( 'input[name="postcode"]' ).on( 'focus', function() {
 				
-					$( '#postcode-hint' ).html( 'UK Postcode has two letters then two numbers, blah' ).slideDown();
+					$( '#hint-postcode' ).html( 'UK Postcode has two letters then two numbers, blah' ).slideDown();
 				});
 
 				$( 'input[name="postcode"]' ).on( 'blur', function() {
 				
-					$( '#postcode-hint' ).html( '' ).slideUp();
+					$( '#hint-postcode' ).html( '' ).slideUp();
 				});
 				
 				$( 'form.proform' ).proform({
