@@ -9,7 +9,8 @@
 		
 		<form class="proform">
 			<div>	<!-- Input container -->
-				<input type="text" name="Postcode" placeholder="Enter a UK postcode" data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#postcode-error">
+				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#postcode-error">
+				<div id="postcode-hint" class="hint-container"></div>
 				<div id="postcode-error" class="error-container"></div>
 			</div>
 			<input type="submit" value="Go!">
@@ -24,7 +25,18 @@
 			$( document ).ready( function() {
 			
 				$( '.error-container' ).hide();
+				$( '.hint-container' ).hide();
 
+				$( 'input[name="postcode"]' ).on( 'focus', function() {
+				
+					$( '#postcode-hint' ).html( 'UK Postcode has two letters then two numbers, blah' ).slideDown();
+				});
+
+				$( 'input[name="postcode"]' ).on( 'blur', function() {
+				
+					$( '#postcode-hint' ).html( '' ).slideUp();
+				});
+				
 				$( 'form.proform' ).proform({
 				
 					input_on_change: function( $input, success ) {
