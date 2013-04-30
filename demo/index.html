@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8 />
+		<title>Proform Demo</title>
+	</head>
+	<body>
+		<h1>Proform Demo</h1>
+		
+		<form class="proform">
+			<div>	<!-- Input container -->
+				<input type="text" name="Postcode" placeholder="Enter a UK postcode" data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#postcode-error">
+				<div id="postcode-error" class="error-container"></div>
+			</div>
+			<input type="submit" value="Go!">
+		</form>
+		<!-- Scripts -->
+		<!--[if IE]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
+		<script type="text/javascript" src="../lib/proform.js"></script>
+		<script>
+			$( document ).ready( function() {
+			
+				$( '.error-container' ).hide();
+
+				$( 'form.proform' ).proform({
+				
+					input_on_change: function( $input, success ) {
+					
+						var error_container = $input.attr( 'data-error-container' );
+						if( success ) {
+						
+							$input.css( 'background-color', '#e0ffe0' );
+							$( error_container ).slideUp( function() {
+							
+								$( this ).html( '' );
+							});
+						} else {
+
+							$input.css( 'background-color', '#ffe0e0' );
+							$( error_container ).html( 'woo' );
+							if( ! $( error_container ).is( ':visible' ) ) {
+							
+								$( error_container ).hide().html( 'Invalid input' ).slideDown();
+							}
+						}
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
