@@ -33,22 +33,22 @@ Built around asynchronous flow- async calls seem to trip up many form libraries.
 
 1. Create an HTML5 page and include, in the following order:
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
-	<script type="text/javascript" src="~proform/lib/proform.js"></script>
-	<script type="text/javascript" src="~proform/lib/proform-validators.js"></script>
-	<script type="text/javascript" src="~proform/lib/proform-lang-en-gb.js"></script>
+	&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;	
+	&lt;script type="text/javascript" src="~proform/lib/proform.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" src="~proform/lib/proform-validators.js"&gt;&lt;/script&gt;
+	&lt;script type="text/javascript" src="~proform/lib/proform-lang-en-gb.js"&gt;&lt;/script&gt;
 
 2. Set validation requirements on your inputs
-	<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" />
+	&lt;input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" /&gt;
 
 3. Assign proform to the relevant forms in the document.ready
 
-	<script>
+	&lt;script&gt;
 		$( document ).ready( function() {
 					
 			$( 'form.proform' ).proform();
 		});
-	</script>
+	&lt;/script&gt;
 
 4. Try, then customise!
 	
