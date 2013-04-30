@@ -1,6 +1,6 @@
 # proform
 
-## Outline
+## Philosophy
 
 A JavaScript library for making web forms usable.
 
@@ -29,6 +29,29 @@ Built around asynchronous flow- async calls seem to trip up many form libraries.
 - When the input is finished ('change' event) then display if there's an error
 - System checks validity on each key press, so we can put a validation tick next to the input if acceptable, or errors.
 
+## Usage
+
+1. Create an HTML5 page and include, in the following order:
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
+	<script type="text/javascript" src="~proform/lib/proform.js"></script>
+	<script type="text/javascript" src="~proform/lib/proform-validators.js"></script>
+	<script type="text/javascript" src="~proform/lib/proform-lang-en-gb.js"></script>
+
+2. Set validation requirements on your inputs
+	<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" />
+
+3. Assign proform to the relevant forms in the document.ready
+
+	<script>
+		$( document ).ready( function() {
+					
+			$( 'form.proform' ).proform();
+		});
+	</script>
+
+4. Try, then customise!
+	
 ## Customisation
 
 ### Validators
