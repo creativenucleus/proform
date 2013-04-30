@@ -9,7 +9,7 @@
 		
 		<form class="proform">
 			<div>	<!-- Input container -->
-				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-pattern="/^[a-z]{2}[0-9]{1,2} ?[0-9]{1,2}[a-z]{2}$/i" data-error-container="#error-postcode" data-hint-container="#hint-postcode">
+				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" data-error-container="#error-postcode" data-hint-container="#hint-postcode">
 				<div id="hint-postcode" class="hint-container"></div>
 				<div id="error-postcode" class="error-container"></div>
 			</div>
@@ -26,6 +26,7 @@
 		<![endif]-->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
 		<script type="text/javascript" src="../lib/proform.js"></script>
+		<script type="text/javascript" src="../lib/proform-validators.js"></script>
 		<script type="text/javascript" src="../lib/proform-lang-en-gb.js"></script>
 		<script>
 			$( document ).ready( function() {
