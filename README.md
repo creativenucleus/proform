@@ -12,6 +12,7 @@ Built around asynchronous flow- async calls seem to trip up many form libraries.
 - Easy validation
 - Sensible config out of the box
 - Validation markup hinting
+- Fallback without JavaScript
 - Work in step with HTML5 validation
 - Flexible extension for validation
 - Asynchronous (promises)
@@ -33,26 +34,43 @@ Built around asynchronous flow- async calls seem to trip up many form libraries.
 
 1. Create an HTML5 page and include, in the following order:
 
-	&lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"&gt;&lt;/script&gt;	
-	&lt;script type="text/javascript" src="~proform/lib/proform.js"&gt;&lt;/script&gt;
-	&lt;script type="text/javascript" src="~proform/lib/proform-validators.js"&gt;&lt;/script&gt;
-	&lt;script type="text/javascript" src="~proform/lib/proform-lang-en-gb.js"&gt;&lt;/script&gt;
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>		
+	<script type="text/javascript" src="~proform/lib/proform.js"></script>
+	<script type="text/javascript" src="~proform/lib/proform-validators.js"></script>
+	<script type="text/javascript" src="~proform/lib/proform-lang-en-gb.js"></script>
 
 2. Set validation requirements on your inputs
-	&lt;input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" /&gt;
+	<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" />
 
 3. Assign proform to the relevant forms in the document.ready
 
-	&lt;script&gt;
+	<script>
 		$( document ).ready( function() {
 					
 			$( 'form.proform' ).proform();
 		});
-	&lt;/script&gt;
+	</script>
 
 4. Try, then customise!
-	
+
+
 ## Customisation
+
+### Validation Options
+
+- Mandatory - the user must enter something in this input if the section is unhidden
+	data-pf-mandatory
+- Built in validators
+	data-pf-validator="uk-postcode"
+- Regex match
+	data-pf-pattern="/regex/i"
+
+### Language Selection
+
+	$.proform.option( 'language', 'fr-fr' );
+
+
+## Extension
 
 ### Validators
 
