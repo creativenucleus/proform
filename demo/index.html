@@ -10,6 +10,12 @@
 		
 		<form class="proform">
 			<div>	<!-- Input container -->
+				<div>Username:</div>
+				<input type="text" name="username" placeholder="Enter a username" data-pf-mandatory data-pf-validator="username" data-error-container="#error-username" data-hint-container="#hint-username"> (valid: 'proform')
+				<div id="hint-username" class="hint-container"></div>
+				<div id="error-username" class="error-container"></div>
+			</div>
+			<div>	<!-- Input container -->
 				<div>Postcode:</div>
 				<input type="text" name="postcode" placeholder="Enter a UK postcode" data-pf-mandatory data-pf-validator="uk-postcode" data-error-container="#error-postcode" data-hint-container="#hint-postcode">
 				<div id="hint-postcode" class="hint-container"></div>
@@ -18,13 +24,13 @@
 			<div>	<!-- Input container -->
 				<div>Do you have a telephone:</div>
 				<select name="has-telephone" >
-					<option data-pf-state-set="telephone=y">Yes</option>
-					<option data-pf-state-set="telephone=n">No</option>
+					<option data-pf-state-unset="telephone">No</option>
+					<option data-pf-state-set="telephone">Yes</option>
 				</select>
-				<div id="hint-telephone" class="hint-container"></div>
-				<div id="error-telephone" class="error-container"></div>
+				<div id="hint-has-telephone" class="hint-container"></div>
+				<div id="error-has-telephone" class="error-container"></div>
 			</div>
-			<div data-pf-state-watch="telephone=y">	<!-- Input container -->
+			<div data-pf-state-display="telephone">	<!-- Input container -->
 				<div>Telephone number:</div>
 				<input type="text" name="telephone" placeholder="Enter a UK telephone" data-pf-validator="uk-telephone" data-error-container="#error-telephone" data-hint-container="#hint-telephone">
 				<div id="hint-telephone" class="hint-container"></div>
@@ -40,6 +46,7 @@
 		<script type="text/javascript" src="../lib/proform.js"></script>
 		<script type="text/javascript" src="../lib/proform-validators.js"></script>
 		<script type="text/javascript" src="../lib/proform-lang-en-gb.js"></script>
+		<script type="text/javascript" src="custom-proform-validators.js"></script>
 		<script>
 			$( document ).ready( function() {
 				
@@ -58,24 +65,23 @@
 				
 				$( 'form.proform' ).proform({
 				
-					input_on_change: function( $input, success ) {
+					input_on_change: function( $input, error, error_string ) {
 					
 						var error_container = $input.attr( 'data-error-container' );
-						if( success ) {
+						if( error ) {
 						
+							$input.css( 'background-color', '#ffe0e0' );
+							if( ! $( error_container ).is( ':visible' ) ) {
+														
+								$( error_container ).hide().html( error_string ).slideDown();
+							}
+						} else {
+
 							$input.css( 'background-color', '#e0ffe0' );
 							$( error_container ).slideUp( function() {
 							
 								$( this ).html( '' );
 							});
-						} else {
-
-							$input.css( 'background-color', '#ffe0e0' );
-							$( error_container ).html( 'woo' );
-							if( ! $( error_container ).is( ':visible' ) ) {
-							
-								$( error_container ).hide().html( 'Invalid input' ).slideDown();
-							}
 						}
 					}
 				});
