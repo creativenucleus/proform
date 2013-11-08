@@ -1,3 +1,7 @@
+__incomplete, but making public to free up paid repo space__
+
+I intend to come back to this at some point.
+
 # proform
 
 ## Philosophy
